@@ -19,32 +19,15 @@ services:
             retries: 5
 
     app:
-#        image: python:3.6-slim
-
         build:
             context: .
             dockerfile: ./app/Dockerfile
-#        build: ./app/Dockerfile
-#        restart: always
         depends_on:
             - postgres
-#              postgres  condition: service_healthy
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local
-            - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
         logging:
             options:
                 max-size: 10m
                 max-file: "3"
-#        volumes:
-#            - ./dags:/usr/local/airflow/dags
-            # - ./plugins:/usr/local/airflow/plugins
-#        ports:
-#            - "8080:8080"
-#        command: pip install psycopg2-binary
-#        healthcheck:
-#            test: ["CMD-SHELL", "pg_isready -U postgres"]
-#            interval: 10s
-#            timeout: 5s
-#            retries: 5

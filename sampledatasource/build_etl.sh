@@ -5,6 +5,6 @@
 
 USERNAME=mavx
 
-docker build -t sampledatasource_etl -f ./sampledatasource/etl/Dockerfile ./sampledatasource
+docker build -t sampledatasource_etl -f ./etl/Dockerfile .
 docker tag sampledatasource_etl $USERNAME/sampledatasource_etl:latest
 docker push $USERNAME/sampledatasource_etl:latest
